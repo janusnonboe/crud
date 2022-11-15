@@ -14,7 +14,7 @@ namespace crud
 
         public override string ToString()
         {
-            return $"ID: {aktivitet}, Name: {type}, Address: {hotel_nr}";
+            return $"ID: {aktivitet}, Type: {type}, Hotel_nr: {hotel_nr}";
         }
       
       

@@ -9,7 +9,7 @@ namespace crud
     class dbclient
     {
       
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Janus Nonboe\source\repos\crud\Database1.mdf;Integrated Security=True";
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AktivitetDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
            
 
@@ -20,10 +20,10 @@ namespace crud
      
         private int Getaktivitet(SqlConnection connection)
         {
-            Console.WriteLine("Calling -> aktivitet");
+            Console.WriteLine("Calling -> Aktivitet");
 
 
-            string queryStringaktivitet = "SELECT  MAX(aktivitet)  FROM aktivitet";
+            string queryStringaktivitet = "SELECT  MAX(aktivitet)  FROM Aktivitet";
             Console.WriteLine($"SQL applied: {queryStringaktivitet}");
 
 
@@ -53,7 +53,7 @@ namespace crud
         {
             Console.WriteLine("Calling -> Deleteaktivitet");
 
-            string deleteCommandString = $"DELETE FROM aktivitet  WHERE aktivitet = {aktivitet}";
+            string deleteCommandString = $"DELETE FROM Aktivitet  WHERE aktivitet = {aktivitet}";
             Console.WriteLine($"SQL applied: {deleteCommandString}");
 
             
@@ -72,7 +72,7 @@ namespace crud
             Console.WriteLine("aktiviteter");
 
             
-            string updateCommandString = $"UPDATE aktivitet ='{aktivitet.aktivitet}', Address='{aktivitet.type}' WHERE Hotel_No = {aktivitet.hotel_nr}";
+            string updateCommandString = $"UPDATE Aktivitet SET Type ='{aktivitet.type}', Hotel_Nr = '{aktivitet.hotel_nr}' WHERE aktivitet = {aktivitet.aktivitet}";
             Console.WriteLine($"{updateCommandString}");
 
             
@@ -231,8 +231,8 @@ namespace crud
                 activity aktivitetToBeUpdated = Getaktivitet(connection, Newactivity.aktivitet);
 
                 
-                aktivitetToBeUpdated.type += "(updated)";
-                aktivitetToBeUpdated.hotel_nr += "(updated)";
+                aktivitetToBeUpdated.type += " updated";
+                aktivitetToBeUpdated.hotel_nr += " updated";
 
                
                 Updateactivity(connection, aktivitetToBeUpdated);
